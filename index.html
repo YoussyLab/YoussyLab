@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>YoussyLab — Digital Products</title>
+<style>
+:root{--g1:#5b21b6;--g2:#be185d;--g3:#c2410c;--solid:#ffffff;--sel:rgba(124,58,237,.10);--bg:#f6f1ff;--bgimg:linear-gradient(135deg,#f3ecff 0%,#fdeaf4 48%,#e6f4ff 100%);--card:rgba(255,255,255,.72);--text:#16132b;--muted:#5f5b7a;--line:#e6e2f3;--a:#7c3aed;--b:#ff3d81;--d:#ffb347;--nav:rgba(248,247,252,.85);
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--g1:#b79cff;--g2:#ff6ba6;--g3:#ffb347;--solid:#15132f;--sel:rgba(167,139,250,.20);--bg:#0b0a24;--bgimg:linear-gradient(135deg,#0c0a26 0%,#1b0f3d 50%,#081a30 100%);--card:rgba(24,22,58,.62);--text:#f3f1ff;--muted:#a9a5c9;--line:#25254a;--nav:rgba(10,10,28,.85)}}
+:root[data-theme="dark"]{--g1:#b79cff;--g2:#ff6ba6;--g3:#ffb347;--solid:#15132f;--sel:rgba(167,139,250,.20);--bg:#0b0a24;--bgimg:linear-gradient(135deg,#0c0a26 0%,#1b0f3d 50%,#081a30 100%);--card:rgba(24,22,58,.62);--text:#f3f1ff;--muted:#a9a5c9;--line:#25254a;--nav:rgba(10,10,28,.85)}
+*{box-sizing:border-box}
+html{scroll-padding-top:80px;scroll-behavior:smooth}
+body{margin:0;background:var(--bgimg);background-attachment:fixed;color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,Roboto,sans-serif;line-height:1.65;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:1140px;margin:0 auto;padding:0 22px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--nav);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:14px;height:68px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.05rem}
+nav{display:flex;gap:6px;align-items:center}
+.dd{position:relative}
+.dd>a{display:block;padding:10px 14px;border-radius:10px;font-size:.95rem;color:var(--muted)}
+.dd>a:after{content:"";display:inline-block;width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);margin-inline-start:9px;transition:transform .2s}.dd:hover>a:after,.dd:focus-within>a:after{transform:rotate(225deg) translateY(-1px)}
+.dd:hover>a,.dd:focus-within>a{color:var(--text);background:var(--card)}
+.menu{position:absolute;top:100%;inset-inline-start:0;min-width:230px;padding:8px;background:var(--solid);border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 40px -20px rgba(0,0,0,.35);opacity:0;visibility:hidden;transform:translateY(8px);transition:.2s}
+.dd:hover .menu,.dd:focus-within .menu{opacity:1;visibility:visible;transform:none}
+.menu a{display:block;padding:10px 12px;border-radius:9px;font-size:.93rem;color:var(--muted)}
+.menu a:hover{background:var(--bg);color:var(--text)}
+.right{display:flex;align-items:center;gap:10px}
+.lang{display:flex;gap:2px;padding:3px;border:1px solid var(--line);border-radius:10px;background:var(--card)}
+.lang button{border:0;background:none;color:var(--muted);font:600 .75rem inherit;padding:5px 8px;border-radius:7px;cursor:pointer}
+.lang button.on{background:linear-gradient(90deg,var(--a),var(--b));color:#fff}
+.btn{display:inline-block;padding:13px 24px;border-radius:12px;font-weight:600;font-size:.95rem;color:#fff;background:linear-gradient(90deg,var(--a),var(--b));transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 26px -10px var(--b)}
+.btn.o{background:var(--card);color:var(--text);border:1.5px solid rgba(124,58,237,.6)}.btn.o:hover{background:var(--sel)}
+.btn.s{padding:10px 18px}
+@media(max-width:900px){nav{display:none}}
+@media(max-width:520px){.btn.s{display:none}}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;padding:70px 0 60px}
+@media(max-width:860px){.hero{grid-template-columns:1fr;padding-top:40px}}
+.eye{font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--b);margin:0 0 14px}
+h1{font-size:clamp(2.3rem,6vw,4.1rem);line-height:1.08;margin:0 0 18px;letter-spacing:-.02em}
+.grad{background:linear-gradient(90deg,var(--g1),var(--g2),var(--g3));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:1.12rem;color:var(--muted);max-width:520px;margin:0 0 28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.vis{position:relative;height:380px}
+.vc{position:absolute;width:62%;padding:20px;border-radius:22px;color:#fff;box-shadow:0 30px 60px -28px rgba(80,20,140,.6);animation:fl 6s ease-in-out infinite}
+.vc i{display:block;width:38px;height:38px;border-radius:12px;background:rgba(255,255,255,.25);margin-bottom:34px}
+.vc b{display:block;height:9px;border-radius:9px;background:rgba(255,255,255,.55);margin-bottom:8px}
+.vc b+b{width:60%;background:rgba(255,255,255,.3)}
+.v1{top:0;inset-inline-start:0;background:linear-gradient(135deg,#7c3aed,#4f46e5)}
+.v2{top:110px;inset-inline-end:0;background:linear-gradient(135deg,#ff3d81,#f97316);animation-delay:-2s}
+.v3{top:230px;inset-inline-start:12%;background:linear-gradient(135deg,#22d3ee,#7c3aed);animation-delay:-4s}
+@keyframes fl{50%{transform:translateY(-12px)}}
+section{padding:72px 0}
+.two{display:grid;grid-template-columns:1fr 1.3fr;gap:50px;align-items:start}
+@media(max-width:860px){.two{grid-template-columns:1fr;gap:20px}}
+h2{font-size:clamp(1.7rem,4vw,2.5rem);line-height:1.15;margin:0 0 14px;letter-spacing:-.02em}
+.txt p{color:var(--muted);margin:0 0 14px}
+.lnk{font-weight:600;color:var(--a)}
+.lnk:after{content:" →"}
+[dir=rtl] .lnk:after{content:" ←"}
+.grid3{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:30px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:28px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.card:hover{transform:translateY(-5px);border-color:var(--b);box-shadow:0 20px 40px -24px var(--b)}
+.card h3{margin:0 0 8px;font-size:1.18rem}
+.card p{margin:0;color:var(--muted);font-size:.95rem}
+.num{font-weight:800;font-size:.85rem;color:var(--b);margin-bottom:22px;display:block}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin:22px 0 26px}
+.chip{padding:11px 20px;border-radius:99px;border:1px solid var(--line);background:var(--card);font-weight:600;font-size:.95rem;transition:.2s}
+.chip:hover{background:linear-gradient(90deg,var(--a),var(--b));color:#fff;border-color:transparent;transform:translateY(-2px)}
+.band{background:linear-gradient(120deg,#4c1d95,#be185d 65%,#ea580c);color:#fff;border-radius:30px;padding:56px 40px;display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center}
+@media(max-width:760px){.band{grid-template-columns:1fr;padding:40px 26px}}
+.big{font-size:clamp(4rem,12vw,7.5rem);font-weight:800;line-height:1;letter-spacing:-.04em}
+.band p{margin:0 0 10px;font-size:1.2rem;max-width:520px}
+.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.pills span{padding:6px 14px;border:1px solid rgba(255,255,255,.4);border-radius:99px;font-size:.85rem}
+.grid4{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));margin-top:30px}
+.ic{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:1.3rem;background:linear-gradient(135deg,var(--a),var(--b));margin-bottom:16px}
+.quote{text-align:center;max-width:800px;margin:0 auto}
+.quote blockquote{font-size:clamp(1.4rem,3.4vw,2.1rem);line-height:1.35;font-weight:700;margin:14px 0 20px;letter-spacing:-.01em}
+.quote small{display:block;color:var(--muted);margin-bottom:26px}
+footer{border-top:1px solid var(--line);padding:44px 0 30px;color:var(--muted);font-size:.9rem}
+.fg{display:grid;gap:30px;grid-template-columns:1.4fr 1fr 1fr 1fr}
+@media(max-width:700px){.fg{grid-template-columns:1fr}}
+footer h4{margin:0 0 10px;color:var(--text);font-size:.9rem}
+footer a{display:block;padding:3px 0}footer a:hover{color:var(--text)}
+footer p{margin:6px 0}
+.legal{margin-top:26px;padding-top:18px;border-top:1px solid var(--line);font-size:.8rem}
+.prod{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));margin-top:30px}
+.prod .card{display:flex;flex-direction:column}
+.tg{align-self:flex-start;font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--a);background:rgba(124,58,237,.1);padding:5px 12px;border-radius:99px;margin-bottom:16px}
+.prod h3{font-size:1.4rem}
+.prod .w{margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font-size:.9rem;color:var(--muted)}
+.prod .w b{color:var(--text)}
+.prod .btn{margin-top:auto;align-self:flex-start}
+.prod .card p{margin-bottom:0}
+.prod .w+.btn{margin-top:20px}
+.soc{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.lp{display:none;position:fixed;inset:0;z-index:50;background:var(--bg);overflow-y:auto;padding:calc(24px + env(safe-area-inset-top,0px)) 0 calc(40px + env(safe-area-inset-bottom,0px))}
+.lp:target{display:block}
+.lp .doc{max-width:760px;margin:0 auto;padding:0 22px}
+.lp h1{font-size:2rem;margin:14px 0 4px;letter-spacing:-.01em}
+.lp h2{font-size:1.12rem;margin:28px 0 8px}
+.lp p,.lp li{color:var(--muted);margin:0 0 10px}
+.lp ul{padding-inline-start:20px;margin:0 0 10px}
+.lp .bk{display:inline-block;font-weight:600;color:var(--a)}
+.lp .up{font-size:.85rem}
+.lp a.m{color:var(--a);text-decoration:underline}
+.ph{background:rgba(255,179,71,.3);color:var(--text);padding:0 5px;border-radius:5px;font-weight:600}
+.lk{display:flex;gap:18px;flex-wrap:wrap;margin-top:12px}
+.lk a{display:inline;padding:0;text-decoration:underline}
+body:before{content:"";position:fixed;inset:-10%;z-index:-1;pointer-events:none;background:radial-gradient(520px 420px at 82% 12%,rgba(124,58,237,.30),transparent 70%),radial-gradient(480px 420px at 8% 70%,rgba(255,61,129,.20),transparent 70%),radial-gradient(420px 360px at 70% 92%,rgba(34,211,238,.18),transparent 70%);animation:au 22s ease-in-out infinite alternate}
+@keyframes au{to{transform:translate3d(-2%,3%,0) scale(1.06)}}
+.card,.pick,.menu,.lang,.chip{backdrop-filter:blur(14px)}
+.pick{padding:26px;border-radius:26px;background:var(--card);border:1px solid var(--line);box-shadow:0 40px 80px -40px rgba(124,58,237,.55)}
+.pk-q{margin:0 0 14px;font-weight:700;font-size:1.05rem}
+.pk-o{display:grid;gap:10px;margin-bottom:18px}
+.pk-o button{display:flex;align-items:center;gap:12px;text-align:start;width:100%;padding:13px 16px;border-radius:14px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:600 .95rem inherit;cursor:pointer;transition:.2s}
+.pk-o button:hover{transform:translateX(4px);border-color:var(--b)}
+[dir=rtl] .pk-o button:hover{transform:translateX(-4px)}
+.pk-o button.on{background:var(--sel);border-color:var(--a);color:var(--text)}.pk-o button.on:after{content:"✓";margin-inline-start:auto;color:var(--a);font-weight:800}
+.pk-r{padding:22px;border-radius:24px;background:var(--card);border:1px solid var(--line);backdrop-filter:blur(14px);box-shadow:0 30px 60px -36px rgba(255,61,129,.6)}
+.pk-r.pop{animation:pk .5s ease}
+@keyframes pk{from{opacity:0;transform:translateY(12px) scale(.98)}to{opacity:1;transform:none}}
+.pk-r .kr{display:block;font-size:.75rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--b);margin-bottom:8px}
+.pk-r h3{font-size:1.5rem}
+.pk-r p{margin:0 0 16px;color:var(--muted);font-size:.95rem}
+.pk-r .tg{margin-bottom:10px}
+.pk-r .btn{width:100%;text-align:center;animation:pl2 2.4s ease-in-out infinite}
+@keyframes pl2{50%{box-shadow:0 0 0 8px rgba(255,61,129,.18)}}
+.lg{position:relative}
+.lgb{display:flex;align-items:center;gap:7px;padding:8px 12px;border:1px solid var(--line);border-radius:12px;background:var(--card);color:var(--text);font:700 .85rem inherit;cursor:pointer}
+.lgb .chev{width:6px;height:6px;border-right:2px solid currentColor;border-bottom:2px solid currentColor;transform:rotate(45deg) translateY(-2px);transition:transform .2s}
+.lg.open .chev{transform:rotate(225deg) translateY(-1px)}
+.lgm{display:none;position:absolute;top:calc(100% + 8px);inset-inline-end:0;min-width:160px;padding:6px;background:var(--solid);border:1px solid var(--line);border-radius:14px;box-shadow:0 20px 40px -20px rgba(0,0,0,.4)}
+.lg.open .lgm{display:block}
+.lgm button{display:block;width:100%;text-align:start;border:0;background:none;color:var(--muted);font:600 .92rem inherit;padding:10px 12px;border-radius:9px;cursor:pointer}
+.lgm button:hover,.lgm button.on{background:var(--sel);color:var(--text)}
+.tr{list-style:none;display:flex;flex-wrap:wrap;gap:8px 20px;padding:0;margin:26px 0 0;color:var(--muted);font-size:.9rem}
+.tr li:before{content:"✓";color:var(--b);font-weight:800;margin-inline-end:7px}
+.rcol{display:grid;gap:14px}
+.pk-h{display:flex;align-items:center;gap:14px;margin-bottom:12px}
+.pi{width:56px;height:56px;border-radius:17px;display:grid;place-items:center;font-size:1.8rem;background:linear-gradient(135deg,var(--a),var(--b));flex:none;box-shadow:0 12px 26px -12px var(--b)}
+.pk-h .kr{margin:0 0 2px}
+.pk-h h3{margin:0}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+.rv.in{opacity:1;transform:none}
+.card.rv.in:hover{transform:translateY(-5px)}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.vc,body:before,.pk-r .btn{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+  <a class="brand" href="#top">
+    <svg width="36" height="36" viewBox="0 0 1000 1000" aria-hidden="true"><defs><linearGradient id="a" gradientUnits="userSpaceOnUse" x1="300" y1="280" x2="500" y2="540"><stop offset="0" stop-color="#7c3aed"/><stop offset="1" stop-color="#ff3d81"/></linearGradient><linearGradient id="b" gradientUnits="userSpaceOnUse" x1="700" y1="280" x2="500" y2="540"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#7c3aed"/></linearGradient><linearGradient id="c" gradientUnits="userSpaceOnUse" x1="500" y1="540" x2="500" y2="740"><stop offset="0" stop-color="#ff3d81"/><stop offset="1" stop-color="#ffb347"/></linearGradient></defs><g fill="none" stroke-width="130" stroke-linecap="round"><line x1="500" y1="540" x2="500" y2="740" stroke="url(#c)"/><line x1="300" y1="280" x2="500" y2="540" stroke="url(#a)"/><line x1="700" y1="280" x2="500" y2="540" stroke="url(#b)"/></g></svg>
+    <span dir="ltr">YoussyLab</span></a>
+  <nav>
+    <div class="dd"><a href="#services" tabindex="0" data-i="n1"></a><div class="menu"><a href="#services" data-i="s1t"></a><a href="#services" data-i="s2t"></a><a href="#services" data-i="s3t"></a></div></div>
+    <div class="dd"><a href="#categories" tabindex="0" data-i="n2"></a><div class="menu"><a href="#categories" data-i="c1"></a><a href="#categories" data-i="c2"></a><a href="#categories" data-i="c3"></a><a href="#categories" data-i="c4"></a><a href="#categories" data-i="c5"></a><a href="#categories" data-i="c6"></a></div></div>
+    <div class="dd"><a href="#apropos" tabindex="0" data-i="n3"></a><div class="menu"><a href="#apropos" data-i="m1"></a><a href="#transparence" data-i="m2"></a></div></div>
+  </nav>
+  <div class="right"><div class="lg" id="lg"><button class="lgb" id="lgb" aria-haspopup="true" aria-expanded="false" aria-label="Language"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18"/></svg><span id="lgc">FR</span><i class="chev"></i></button><div class="lgm" id="lgm"><button data-l="fr">Français</button><button data-l="en">English</button><button data-l="ar">العربية</button><button data-l="it">Italiano</button></div></div><a class="btn s" href="mailto:Youssylab@outlook.com" data-i="hc"></a></div>
+</div></header>
+
+<main id="top">
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <p class="eye rv" data-i="eye"></p>
+      <h1 class="rv"><span data-i="h1a"></span> <span class="grad" data-i="h1b"></span></h1>
+      <p class="lead rv" data-i="lead"></p>
+      <div class="btns rv"><a class="btn" href="#categories" data-i="cta"></a><a class="btn o" href="#apropos" data-i="b2"></a></div>
+      <ul class="tr rv"><li data-i="p1"></li><li data-i="p2"></li><li data-i="p3"></li></ul>
+    </div>
+    <div class="rcol rv">
+      <div class="pick">
+        <p class="pk-q" data-i="kq"></p>
+        <div class="pk-o" style="margin-bottom:0">
+          <button data-k="menudrop"><span>📤</span><span data-i="k1"></span></button>
+          <button data-k="jasper"><span>✍️</span><span data-i="k2"></span></button>
+          <button data-k="canva"><span>🎨</span><span data-i="k3"></span></button>
+        </div>
+      </div>
+      <div class="pk-r pop" id="pkr"><div class="pk-h"><span class="pi" id="pki"></span><div><span class="kr" data-i="kr"></span><h3 id="pkn"></h3></div></div><span class="tg" id="pkg"></span><p id="pkd"></p><a class="btn" id="pkb" target="_blank" rel="sponsored noopener"><span data-i="kgo"></span> →</a></div>
+    </div>
+  </div>
+</div>
+
+<section id="apropos"><div class="wrap two">
+  <div><p class="eye rv" data-i="m1"></p><h2 class="rv" data-i="ah"></h2></div>
+  <div class="txt rv"><p data-i="ap1"></p><p data-i="ap2"></p><a class="lnk" href="#transparence" data-i="al"></a></div>
+</div></section>
+
+<section id="services"><div class="wrap">
+  <p class="eye rv" data-i="n1"></p><h2 class="rv" data-i="sh"></h2>
+  <div class="grid3">
+    <div class="card rv"><span class="num">01</span><h3 data-i="s1t"></h3><p data-i="s1d"></p></div>
+    <div class="card rv"><span class="num">02</span><h3 data-i="s2t"></h3><p data-i="s2d"></p></div>
+    <div class="card rv"><span class="num">03</span><h3 data-i="s3t"></h3><p data-i="s3d"></p></div>
+  </div>
+</div></section>
+
+<section id="selection"><div class="wrap">
+  <p class="eye rv" data-i="pe"></p><h2 class="rv" data-i="ph"></h2><p class="lead rv" data-i="pp"></p>
+  <div class="prod">
+    <div class="card rv"><span class="tg" data-i="p1g"></span><h3>Menu Drop</h3><p data-i="p1d"></p><div class="w"><b data-i="pwl"></b> <span data-i="p1w"></span></div><a class="btn" data-p="menudrop" target="_blank" rel="sponsored noopener" data-i="pbtn"></a></div>
+    <div class="card rv"><span class="tg" data-i="p2g"></span><h3>Jasper</h3><p data-i="p2d"></p><div class="w"><b data-i="pwl"></b> <span data-i="p2w"></span></div><a class="btn" data-p="jasper" target="_blank" rel="sponsored noopener" data-i="pbtn"></a></div>
+    <div class="card rv"><span class="tg" data-i="p3g"></span><h3>Canva</h3><p data-i="p3d"></p><div class="w"><b data-i="pwl"></b> <span data-i="p3w"></span></div><a class="btn" data-p="canva" target="_blank" rel="sponsored noopener" data-i="pbtn"></a></div>
+  </div>
+</div></section>
+
+<section id="categories"><div class="wrap">
+  <p class="eye rv" data-i="n2"></p><h2 class="rv" data-i="ch"></h2><p class="lead rv" data-i="cp"></p>
+  <div class="chips rv"><a class="chip" href="#" data-i="c1"></a><a class="chip" href="#" data-i="c2"></a><a class="chip" href="#" data-i="c3"></a><a class="chip" href="#" data-i="c4"></a><a class="chip" href="#" data-i="c5"></a><a class="chip" href="#" data-i="c6"></a></div>
+  <span class="lnk rv" data-i="soon"></span>
+</div></section>
+
+<section id="transparence"><div class="wrap"><div class="band rv">
+  <div class="big">0 €</div>
+  <div><p data-i="bt"></p><div class="pills"><span data-i="p1"></span><span data-i="p2"></span><span data-i="p3"></span></div></div>
+</div></div></section>
+
+<section><div class="wrap">
+  <p class="eye rv" data-i="wl"></p><h2 class="rv" data-i="wh"></h2>
+  <div class="grid4">
+    <div class="card rv"><div class="ic">🧪</div><h3 data-i="w1t"></h3><p data-i="w1d"></p></div>
+    <div class="card rv"><div class="ic">⚖️</div><h3 data-i="w2t"></h3><p data-i="w2d"></p></div>
+    <div class="card rv"><div class="ic">🤝</div><h3 data-i="w3t"></h3><p data-i="w3d"></p></div>
+    <div class="card rv"><div class="ic">🎯</div><h3 data-i="w4t"></h3><p data-i="w4d"></p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap quote rv">
+  <p class="eye" data-i="ql"></p>
+  <blockquote data-i="qt"></blockquote>
+  <small data-i="qn"></small>
+  <div class="soc"><a class="btn" data-s="ig" target="_blank" rel="noopener">Instagram</a><a class="btn o" data-s="tt" target="_blank" rel="noopener">TikTok</a></div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="fg">
+    <div><strong dir="ltr" style="color:var(--text)">YoussyLab</strong><p data-i="fd"></p></div>
+    <div><h4 data-i="n1"></h4><a href="#services" data-i="s1t"></a><a href="#services" data-i="s2t"></a><a href="#services" data-i="s3t"></a></div>
+    <div><h4 data-i="n2"></h4><a href="#categories" data-i="c1"></a><a href="#categories" data-i="c2"></a><a href="#categories" data-i="c3"></a></div>
+    <div><h4 data-i="fw"></h4><a data-s="ig" target="_blank" rel="noopener">Instagram</a><a data-s="tt" target="_blank" rel="noopener">TikTok</a><a href="mailto:Youssylab@outlook.com">Email</a></div>
+  </div>
+  <p class="legal">© 2026 YoussyLab — <span data-i="f1"></span></p>
+  <div class="lk"><a href="#mentions">Mentions légales</a><a href="#confidentialite">Politique de confidentialité</a><a href="mailto:Youssylab@outlook.com">Youssylab@outlook.com</a></div>
+</div></footer>
+
+
+<div class="lp" id="mentions"><div class="doc">
+<a class="bk" href="#top">← Retour au site</a>
+<h1>Mentions légales</h1>
+<p class="up">Dernière mise à jour : 30 septembre 2026. Les champs surlignés sont à compléter avant la mise en ligne.</p>
+
+<h2>1. Éditeur du site</h2>
+<p>Le site YoussyLab est édité par Youssra <span class="ph">[NOM DE FAMILLE]</span>, <span class="ph">[statut : micro-entrepreneur / entrepreneur individuel / autre]</span>.<br>
+Adresse : <span class="ph">[adresse postale ou adresse de domiciliation]</span>, France.<br>
+E-mail : <a class="m" href="mailto:Youssylab@outlook.com">Youssylab@outlook.com</a><br>
+SIREN / SIRET : <span class="ph">[numéro, si vous êtes immatriculée]</span><br>
+Directrice de la publication : Youssra <span class="ph">[NOM DE FAMILLE]</span>.</p>
+
+<h2>2. Hébergeur</h2>
+<p>Le site est hébergé par <span class="ph">[nom de l'hébergeur, ex. Cloudflare, Netlify, OVHcloud…]</span>, <span class="ph">[adresse de l'hébergeur]</span>, <span class="ph">[site web]</span>.</p>
+
+<h2>3. Objet du site et liens affiliés</h2>
+<p>YoussyLab présente des outils, logiciels et services numériques, avec des avis et comparatifs à titre informatif. Certains liens du site sont des <strong>liens d'affiliation</strong> : si vous achetez ou vous abonnez via ces liens, l'éditrice peut percevoir une commission, sans frais supplémentaires pour vous. Ces liens sont signalés sur le site. Les avis restent indépendants et ne constituent ni un conseil personnalisé ni une garantie de résultat.</p>
+
+<h2>4. Propriété intellectuelle</h2>
+<p>La structure, les textes, le logo, le design et les éléments graphiques de YoussyLab sont protégés. Toute reproduction sans autorisation écrite est interdite. Les noms et marques cités (par exemple Jasper, Canva, Menu Drop) appartiennent à leurs propriétaires respectifs ; leur mention n'implique aucune affiliation officielle autre que celle indiquée ci-dessus.</p>
+
+<h2>5. Responsabilité</h2>
+<ul><li>Les informations (fonctionnalités, prix, conditions, disponibilité) peuvent changer. Vérifiez-les toujours sur le site officiel du produit avant tout achat.</li>
+<li>L'éditrice ne saurait être tenue responsable d'un dommage résultant de l'usage des informations du site ou des services de tiers.</li>
+<li>Aucun résultat financier ou professionnel n'est garanti.</li></ul>
+
+<h2>6. Liens externes</h2>
+<p>Le site contient des liens vers des sites tiers (partenaires, réseaux sociaux). L'éditrice n'exerce aucun contrôle sur leur contenu ni sur leurs pratiques, notamment en matière de cookies et de données personnelles.</p>
+
+<h2>7. Données personnelles</h2>
+<p>Le traitement des données est décrit dans la <a class="m" href="#confidentialite">politique de confidentialité</a>.</p>
+
+<h2>8. Droit applicable</h2>
+<p>Le présent site est soumis au droit français. En cas de litige, et à défaut de solution amiable, les tribunaux français seront compétents, sous réserve des règles protégeant les consommateurs.</p>
+<p><a class="bk" href="#top">← Retour au site</a></p>
+</div></div>
+
+<div class="lp" id="confidentialite"><div class="doc">
+<a class="bk" href="#top">← Retour au site</a>
+<h1>Politique de confidentialité</h1>
+<p class="up">Dernière mise à jour : 30 septembre 2026.</p>
+
+<h2>1. Responsable du traitement</h2>
+<p>Youssra <span class="ph">[NOM DE FAMILLE]</span>, éditrice de YoussyLab. Contact : <a class="m" href="mailto:Youssylab@outlook.com">Youssylab@outlook.com</a>.</p>
+
+<h2>2. Données que nous collectons</h2>
+<p>Le site n'a <strong>ni compte utilisateur, ni formulaire, ni newsletter</strong>. Nous ne recevons des données personnelles que si vous nous écrivez : votre nom, votre adresse e-mail et le contenu de votre message.</p>
+<ul><li><strong>Finalité :</strong> répondre à votre demande.</li>
+<li><strong>Base légale :</strong> intérêt légitime (répondre aux messages reçus).</li>
+<li><strong>Durée de conservation :</strong> le temps nécessaire au traitement de votre demande, puis au maximum <span class="ph">[3 ans]</span> après le dernier échange.</li></ul>
+
+<h2>3. Stockage local dans votre navigateur</h2>
+<p>Votre choix de langue peut être mémorisé dans votre navigateur (stockage local) pour votre confort. Cette information reste sur votre appareil, n'est pas transmise à l'éditrice et ne sert à aucun suivi.</p>
+
+<h2>4. Cookies et mesure d'audience</h2>
+<p>À ce jour, le site n'utilise ni outil de mesure d'audience, ni cookies publicitaires. Si de tels outils sont ajoutés, cette politique sera mise à jour et votre consentement sera recueilli lorsque la loi l'exige.</p>
+
+<h2>5. Liens d'affiliation et sites tiers</h2>
+<p>Lorsque vous cliquez sur un lien vers un partenaire, vous quittez YoussyLab. Le site du partenaire peut déposer des cookies pour mémoriser l'origine de votre visite (par exemple afin d'attribuer une commission). Leur durée et leur usage relèvent de la politique du partenaire, que nous vous invitons à consulter. Il en va de même pour Instagram et TikTok.</p>
+
+<h2>6. Destinataires et transferts</h2>
+<p>Les messages transitent par le service de messagerie de l'éditrice (Outlook) et le site est servi par son hébergeur. Ces prestataires peuvent traiter des données en dehors de l'Union européenne, dans le cadre de garanties prévues par la réglementation. Nous ne vendons aucune donnée.</p>
+
+<h2>7. Vos droits (RGPD)</h2>
+<p>Vous disposez des droits d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité de vos données. Pour les exercer, écrivez à <a class="m" href="mailto:Youssylab@outlook.com">Youssylab@outlook.com</a>. Vous pouvez également introduire une réclamation auprès de la CNIL (<a class="m" href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>).</p>
+
+<h2>8. Sécurité</h2>
+<p>Nous limitons les données reçues au strict nécessaire et les conservons dans des services protégés par mot de passe. Aucun système n'étant infaillible, évitez de nous transmettre des informations sensibles.</p>
+
+<h2>9. Modifications</h2>
+<p>Cette politique peut évoluer. La date de dernière mise à jour figure en haut de cette page.</p>
+<p><a class="bk" href="#top">← Retour au site</a></p>
+</div></div>
+
+<script>
+var D={
+fr:{n1:"Services",n2:"Catégories",n3:"Entreprise",cta:"Voir la sélection",b2:"À propos",m1:"À propos",m2:"Transparence",eye:"Produits digitaux · Affiliation",h1a:"Le bon outil digital,",h1b:"sans hésiter.",lead:"Outils, logiciels, formations et templates : je teste, compare et recommande pour que vous choisissiez vite et sans mauvaise surprise.",ah:"La clarté vient de la comparaison.",ap1:"Trop d'outils, trop d'avis contradictoires. YoussyLab trie l'offre digitale pour vous montrer ce qui est vraiment utile, selon votre besoin et votre budget.",ap2:"Chaque recommandation est expliquée : à qui le produit convient, à qui il ne convient pas, et ce qu'il faut savoir avant d'acheter.",al:"Notre engagement de transparence",sh:"Trois façons de vous aider à choisir.",s1t:"Comparatifs",s1d:"Fonctionnalités, prix et avis côte à côte pour décider en quelques minutes.",s2t:"Guides d'achat",s2d:"Les critères qui comptent, expliqués simplement, pour chaque type de produit.",s3t:"Bons plans",s3d:"Offres et promotions à connaître, signalées clairement.",ch:"Pour chaque besoin, la bonne catégorie.",cp:"Six univers pour trouver l'outil ou la formation qui vous fait gagner du temps.",c1:"Formations en ligne",c2:"Outils d'IA",c3:"Logiciels & SaaS",c4:"Design & templates",c5:"Productivité",c6:"Web & hébergement",soon:"Premiers contenus bientôt",bt:"de frais supplémentaires pour vous. Les liens affiliés sont toujours indiqués, et les avis restent indépendants.",p1:"Liens signalés",p2:"Avis sincères",p3:"Aucune promesse irréaliste",wl:"Comment je travaille",wh:"Pour que le choix soit simple.",w1t:"Testé",w1d:"Je m'appuie sur l'usage réel, les fonctionnalités et les retours d'utilisateurs.",w2t:"Comparé",w2d:"Plusieurs options mises face à face, avantages et limites compris.",w3t:"Honnête",w3d:"Si un produit ne convient pas, je le dis clairement.",w4t:"Utile",w4d:"Des conseils concrets, adaptés à votre objectif et à votre budget.",ql:"Ma perspective",qt:"« Un bon conseil ne promet pas tout : il aide à choisir ce qui convient vraiment. »",qn:"Youssra — Fondatrice de YoussyLab",pe:"Sélection",ph:"Ma sélection du moment",pp:"Trois outils que je recommande de découvrir.",pbtn:"Voir le site officiel",pwl:"Pour qui ?",p1g:"Productivité · macOS",p1d:"Partagez fichiers, dossiers, liens et texte par AirDrop en les glissant sur l'icône de la barre des menus.",p1w:"Utilisateurs de Mac qui partagent souvent vers iPhone ou iPad. Nécessite macOS 26 ou plus récent.",p2g:"IA · Marketing",p2d:"Plateforme d'IA pour le marketing : agents spécialisés, workflows de contenu et cohérence de la voix de marque.",p2w:"Équipes marketing et créateurs qui produisent beaucoup de contenu. Un essai gratuit est proposé.",p3g:"Design · Templates",p3d:"Plateforme de design avec des modèles prêts à l'emploi pour réseaux sociaux, présentations et plus encore.",p3w:"Indépendants et petites équipes qui veulent créer visuellement sans être designers. Version gratuite et formules payantes.",ql:"Bienvenue",qt:"Bienvenue ! Je suis Youssra, votre guide pour découvrir les outils et solutions digitales les plus intelligents. Je fais le tri avec des avis honnêtes et éprouvés, pour booster votre productivité et développer votre activité, sans complication.",qn:"Youssra — YoussyLab",fw:"Suivez-moi",kq:"Que cherchez-vous ?",k1:"Partager des fichiers en un clin d'œil",k2:"Créer du contenu marketing avec l'IA",k3:"Concevoir des visuels pro",kr:"Recommandé pour vous",kgo:"Essayer maintenant",hc:"Me contacter",fd:"Sélection d'outils et de produits digitaux, comparés avec honnêteté.",f1:"Ce site contient des liens affiliés : je peux percevoir une commission sans frais supplémentaires pour vous. Aucun résultat n'est garanti."},
+en:{n1:"Services",n2:"Categories",n3:"Company",cta:"See the selection",b2:"About",m1:"About",m2:"Transparency",eye:"Digital products · Affiliate",h1a:"The right digital tool,",h1b:"without hesitation.",lead:"Tools, software, courses and templates: I test, compare and recommend so you can choose quickly and avoid bad surprises.",ah:"Clarity comes from comparison.",ap1:"Too many tools, too many conflicting reviews. YoussyLab sorts the digital offer to show you what is truly useful for your needs and budget.",ap2:"Every recommendation is explained: who the product suits, who it doesn't, and what to know before buying.",al:"Our transparency commitment",sh:"Three ways to help you choose.",s1t:"Comparisons",s1d:"Features, prices and reviews side by side to decide in minutes.",s2t:"Buying guides",s2d:"The criteria that matter, explained simply, for each type of product.",s3t:"Deals",s3d:"Offers and promotions worth knowing, clearly flagged.",ch:"The right category for every need.",cp:"Six areas to find the tool or course that saves you time.",c1:"Online courses",c2:"AI tools",c3:"Software & SaaS",c4:"Design & templates",c5:"Productivity",c6:"Web & hosting",soon:"First content coming soon",bt:"extra cost to you. Affiliate links are always disclosed and reviews stay independent.",p1:"Links disclosed",p2:"Honest reviews",p3:"No unrealistic promises",wl:"How I work",wh:"So that choosing is simple.",w1t:"Tested",w1d:"I rely on real use, features and user feedback.",w2t:"Compared",w2d:"Several options head to head, pros and cons included.",w3t:"Honest",w3d:"If a product isn't a fit, I say so clearly.",w4t:"Useful",w4d:"Concrete advice tailored to your goal and budget.",ql:"My perspective",qt:"“Good advice doesn't promise everything: it helps you choose what truly fits.”",qn:"Youssra — Founder of YoussyLab",pe:"Selection",ph:"My current selection",pp:"Three tools I recommend checking out.",pbtn:"Visit official site",pwl:"Who is it for?",p1g:"Productivity · macOS",p1d:"Share files, folders, links and text via AirDrop by dragging them onto the menu bar icon.",p1w:"Mac users who often share to an iPhone or iPad. Requires macOS 26 or later.",p2g:"AI · Marketing",p2d:"An AI platform for marketing: specialized agents, content workflows and consistent brand voice.",p2w:"Marketing teams and creators producing lots of content. A free trial is offered.",p3g:"Design · Templates",p3d:"A design platform with ready-to-use templates for social media, presentations and more.",p3w:"Freelancers and small teams who want to create visually without being designers. Free version and paid plans.",ql:"Welcome",qt:"Welcome! I'm Youssra, your guide to discovering the smartest digital tools and solutions. I cut through the noise with honest, battle-tested reviews and recommendations designed to multiply your productivity and scale your business—zero hassle attached.",qn:"Youssra — YoussyLab",fw:"Follow me",kq:"What are you looking for?",k1:"Share files in a snap",k2:"Create marketing content with AI",k3:"Design professional visuals",kr:"Recommended for you",kgo:"Try it now",hc:"Contact me",fd:"A selection of digital tools and products, compared honestly.",f1:"This site contains affiliate links: I may earn a commission at no extra cost to you. No results are guaranteed."},
+ar:{n1:"الخدمات",n2:"الفئات",n3:"عن المشروع",cta:"شاهد الاختيارات",b2:"من نحن",m1:"من نحن",m2:"الشفافية",eye:"منتجات رقمية · تسويق بالعمولة",h1a:"الأداة الرقمية المناسبة،",h1b:"دون تردد.",lead:"أدوات وبرمجيات ودورات وقوالب: أجرّب وأقارن وأوصي لتختار بسرعة ودون مفاجآت سيئة.",ah:"الوضوح يأتي من المقارنة.",ap1:"أدوات كثيرة وآراء متضاربة. YoussyLab ينتقي لك العرض الرقمي ليُظهر ما هو مفيد فعلاً حسب حاجتك وميزانيتك.",ap2:"كل توصية مشروحة: لمن يناسب المنتج، ولمن لا يناسب، وما يجب معرفته قبل الشراء.",al:"التزامنا بالشفافية",sh:"ثلاث طرق لمساعدتك على الاختيار.",s1t:"المقارنات",s1d:"الميزات والأسعار والآراء جنباً إلى جنب لتقرر في دقائق.",s2t:"أدلة الشراء",s2d:"المعايير المهمة مشروحة ببساطة لكل نوع من المنتجات.",s3t:"العروض",s3d:"عروض وتخفيضات تستحق المعرفة، موضّحة بوضوح.",ch:"لكل حاجة الفئة المناسبة.",cp:"ستة مجالات لتجد الأداة أو الدورة التي توفّر وقتك.",c1:"دورات عبر الإنترنت",c2:"أدوات الذكاء الاصطناعي",c3:"برمجيات وSaaS",c4:"تصميم وقوالب",c5:"الإنتاجية",c6:"الويب والاستضافة",soon:"أول المحتويات قريباً",bt:"تكلفة إضافية عليك. روابط العمولة موضّحة دائماً والآراء مستقلة.",p1:"روابط موضّحة",p2:"آراء صادقة",p3:"لا وعود غير واقعية",wl:"كيف أعمل",wh:"ليكون الاختيار بسيطاً.",w1t:"مُجرَّب",w1d:"أعتمد على الاستخدام الفعلي والميزات وآراء المستخدمين.",w2t:"مُقارَن",w2d:"عدة خيارات وجهاً لوجه مع الإيجابيات والسلبيات.",w3t:"صادق",w3d:"إن لم يناسبك منتج فأقول ذلك بوضوح.",w4t:"مفيد",w4d:"نصائح عملية تناسب هدفك وميزانيتك.",ql:"رؤيتي",qt:"«النصيحة الجيدة لا تعد بكل شيء: بل تساعدك على اختيار ما يناسبك فعلاً.»",qn:"يسرى — مؤسسة YoussyLab",pe:"الاختيارات",ph:"اختياراتي الحالية",pp:"ثلاث أدوات أنصح باكتشافها.",pbtn:"زيارة الموقع الرسمي",pwl:"لمن يناسب؟",p1g:"الإنتاجية · macOS",p1d:"شارك الملفات والمجلدات والروابط والنصوص عبر AirDrop بسحبها إلى أيقونة شريط القوائم.",p1w:"مستخدمو Mac الذين يشاركون كثيراً مع iPhone أو iPad. يتطلب macOS 26 أو أحدث.",p2g:"ذكاء اصطناعي · تسويق",p2d:"منصة ذكاء اصطناعي للتسويق: وكلاء متخصصون وسير عمل للمحتوى وثبات في صوت العلامة.",p2w:"فرق التسويق وصنّاع المحتوى الذين ينتجون الكثير. تتوفر تجربة مجانية.",p3g:"تصميم · قوالب",p3d:"منصة تصميم بقوالب جاهزة لوسائل التواصل والعروض التقديمية وغيرها.",p3w:"المستقلون والفرق الصغيرة التي تريد الإبداع البصري دون أن تكون مصممة. نسخة مجانية وخطط مدفوعة.",ql:"مرحباً",qt:"مرحباً بكم! أنا يسرى، دليلكم لاكتشاف أذكى الأدوات والحلول الرقمية. أفرز لكم الضجيج بمراجعات صادقة ومجرَّبة وتوصيات تضاعف إنتاجيتكم وتنمّي أعمالكم، دون أي تعقيد.",qn:"يسرى — YoussyLab",fw:"تابعني",kq:"ماذا تبحثون عنه؟",k1:"مشاركة الملفات بلمح البصر",k2:"إنشاء محتوى تسويقي بالذكاء الاصطناعي",k3:"تصميم مرئيات احترافية",kr:"موصى به لك",kgo:"جرّبه الآن",hc:"تواصل معي",fd:"اختيارات من الأدوات والمنتجات الرقمية، مقارنة بصدق.",f1:"يحتوي الموقع على روابط عمولة: قد أحصل على عمولة دون تكلفة إضافية عليك. لا تُضمن أي نتائج."},
+it:{n1:"Servizi",n2:"Categorie",n3:"Azienda",cta:"Vedi la selezione",b2:"Chi sono",m1:"Chi sono",m2:"Trasparenza",eye:"Prodotti digitali · Affiliazione",h1a:"Lo strumento digitale giusto,",h1b:"senza esitare.",lead:"Strumenti, software, corsi e template: provo, confronto e consiglio per farti scegliere in fretta e senza brutte sorprese.",ah:"La chiarezza nasce dal confronto.",ap1:"Troppi strumenti, troppe recensioni contrastanti. YoussyLab seleziona l'offerta digitale per mostrarti ciò che serve davvero, in base a esigenze e budget.",ap2:"Ogni consiglio è spiegato: a chi si adatta il prodotto, a chi no e cosa sapere prima di acquistare.",al:"Il nostro impegno di trasparenza",sh:"Tre modi per aiutarti a scegliere.",s1t:"Confronti",s1d:"Funzioni, prezzi e recensioni affiancati per decidere in pochi minuti.",s2t:"Guide all'acquisto",s2d:"I criteri che contano, spiegati semplicemente, per ogni tipo di prodotto.",s3t:"Offerte",s3d:"Promozioni utili da conoscere, segnalate chiaramente.",ch:"Per ogni esigenza, la categoria giusta.",cp:"Sei aree per trovare lo strumento o il corso che ti fa risparmiare tempo.",c1:"Corsi online",c2:"Strumenti IA",c3:"Software e SaaS",c4:"Design e template",c5:"Produttività",c6:"Web e hosting",soon:"I primi contenuti in arrivo",bt:"di costi aggiuntivi per te. I link di affiliazione sono sempre dichiarati e le recensioni restano indipendenti.",p1:"Link dichiarati",p2:"Recensioni sincere",p3:"Nessuna promessa irrealistica",wl:"Come lavoro",wh:"Perché scegliere sia semplice.",w1t:"Provato",w1d:"Mi baso sull'uso reale, sulle funzioni e sui feedback degli utenti.",w2t:"Confrontato",w2d:"Più opzioni a confronto, con pro e contro.",w3t:"Onesto",w3d:"Se un prodotto non va bene, lo dico chiaramente.",w4t:"Utile",w4d:"Consigli concreti adatti al tuo obiettivo e al tuo budget.",ql:"La mia prospettiva",qt:"«Un buon consiglio non promette tutto: aiuta a scegliere ciò che davvero fa per te.»",qn:"Youssra — Fondatrice di YoussyLab",pe:"Selezione",ph:"La mia selezione del momento",pp:"Tre strumenti che consiglio di scoprire.",pbtn:"Vai al sito ufficiale",pwl:"Per chi?",p1g:"Produttività · macOS",p1d:"Condividi file, cartelle, link e testo via AirDrop trascinandoli sull'icona della barra dei menu.",p1w:"Utenti Mac che condividono spesso verso iPhone o iPad. Richiede macOS 26 o successivo.",p2g:"IA · Marketing",p2d:"Piattaforma IA per il marketing: agenti specializzati, flussi di contenuto e voce del brand coerente.",p2w:"Team marketing e creator che producono molti contenuti. È disponibile una prova gratuita.",p3g:"Design · Template",p3d:"Piattaforma di design con modelli pronti all'uso per social, presentazioni e altro.",p3w:"Freelance e piccoli team che vogliono creare visivamente senza essere designer. Versione gratuita e piani a pagamento.",ql:"Benvenuti",qt:"Benvenuti! Sono Youssra, la vostra guida per scoprire gli strumenti e le soluzioni digitali più intelligenti. Faccio chiarezza con recensioni oneste e collaudate per far crescere la vostra produttività e la vostra attività, senza complicazioni.",qn:"Youssra — YoussyLab",fw:"Seguimi",kq:"Cosa stai cercando?",k1:"Condividere file in un attimo",k2:"Creare contenuti marketing con l'IA",k3:"Progettare visual professionali",kr:"Consigliato per te",kgo:"Provalo ora",hc:"Contattami",fd:"Una selezione di strumenti e prodotti digitali, confrontati con onestà.",f1:"Questo sito contiene link di affiliazione: posso ricevere una commissione senza costi aggiuntivi per te. Nessun risultato è garantito."}
+};
+var LINKS={menudrop:"https://apps.apple.com/app/id6754022187",jasper:"https://www.jasper.ai/",canva:"https://www.canva.com/"};
+/* Remplacez ces liens par vos liens d'affiliation une fois acceptée dans les programmes. */
+var SOCIAL={ig:"https://www.instagram.com/youssylab/",tt:"https://www.tiktok.com/@youssylab1331"};
+document.querySelectorAll("[data-p]").forEach(function(a){a.href=LINKS[a.dataset.p]});
+document.querySelectorAll("[data-s]").forEach(function(a){a.href=SOCIAL[a.dataset.s]});
+var PK={menudrop:{n:"Menu Drop",g:"p1g",d:"p1d"},jasper:{n:"Jasper",g:"p2g",d:"p2d"},canva:{n:"Canva",g:"p3g",d:"p3d"}},cur="fr",pk="menudrop",auto=null;
+function renderPick(){var d=D[cur]||D.fr,p=PK[pk];
+  document.getElementById("pkn").textContent=p.n;document.getElementById("pki").textContent={menudrop:"📤",jasper:"✍️",canva:"🎨"}[pk];document.getElementById("pkg").textContent=d[p.g];document.getElementById("pkd").textContent=d[p.d];
+  document.getElementById("pkb").href=LINKS[pk];
+  document.querySelectorAll(".pk-o button").forEach(function(x){x.classList.toggle("on",x.dataset.k===pk)});
+  var r=document.getElementById("pkr");r.classList.remove("pop");void r.offsetWidth;r.classList.add("pop")}
+function choose(k,user){pk=k;if(user&&auto){clearInterval(auto);auto=null}renderPick()}
+document.querySelectorAll(".pk-o button").forEach(function(b){b.addEventListener("click",function(){choose(b.dataset.k,true)})});
+if(!window.matchMedia("(prefers-reduced-motion: reduce)").matches){auto=setInterval(function(){var ks=Object.keys(PK);choose(ks[(ks.indexOf(pk)+1)%ks.length],false)},5000)}
+document.getElementById("lgb").addEventListener("click",function(e){e.stopPropagation();var o=document.getElementById("lg").classList.toggle("open");this.setAttribute("aria-expanded",o)});
+document.addEventListener("click",function(e){var g=document.getElementById("lg");if(!g.contains(e.target))g.classList.remove("open")});
+function setLang(l){
+  var d=D[l]||D.fr;
+  cur=l;document.getElementById("lgc").textContent=({fr:"FR",en:"EN",ar:"AR",it:"IT"})[l];document.getElementById("lg").classList.remove("open");document.getElementById("lgb").setAttribute("aria-expanded","false");document.documentElement.lang=l;document.documentElement.dir=(l==="ar")?"rtl":"ltr";
+  document.querySelectorAll("[data-i]").forEach(function(e){e.textContent=d[e.getAttribute("data-i")]});
+  document.querySelectorAll(".lgm button").forEach(function(b){b.classList.toggle("on",b.dataset.l===l)});
+  document.title="YoussyLab — "+d.h1b.replace(/[.,]$/,"");
+  renderPick();
+  try{localStorage.setItem("yl-lang",l)}catch(e){}
+}
+document.querySelectorAll(".lgm button").forEach(function(b){b.addEventListener("click",function(){setLang(b.dataset.l)})});
+var st=null;try{st=localStorage.getItem("yl-lang")}catch(e){}
+var nv=(navigator.language||"fr").slice(0,2);
+setLang(st||(D[nv]?nv:"fr"));
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);setTimeout(function(){e.target.style.transitionDelay="0ms"},1200)}})},{threshold:.12});
+document.querySelectorAll(".rv").forEach(function(el,i){el.style.transitionDelay=(i%3)*90+"ms";io.observe(el)});
+</script>
+</body>
+</html>
